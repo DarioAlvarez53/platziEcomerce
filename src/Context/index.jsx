@@ -16,10 +16,21 @@ export const ShoppingCartProvider = ({children}) => {
     const [count, setCount] = useState(0)
     // console.log('COUNT: ', count)
 
+    //Creando funcion para que se abra y cierre el sidebar
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
+
+    //Creando funciones que se encargaran de ejecutarse para que cambie el valor de isProductDetailOpen
+    const openProductDetail = () => setIsProductDetailOpen(true) //esta se en carga de cambiar el valor a true
+    const closeProductDetail = () => setIsProductDetailOpen(false) //esta se encarga de camviar el valor a false
+
     return (
         <ShoppingCartContext.Provider value={{
             count,
-            setCount
+            setCount,
+            //Aqui se pasan la funciones para que todos los componentes escuchen el cambio
+            openProductDetail,
+            closeProductDetail,
+            isProductDetailOpen
         }}>
             {children}
         </ShoppingCartContext.Provider>
