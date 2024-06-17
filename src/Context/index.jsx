@@ -18,10 +18,21 @@ export const ShoppingCartProvider = ({children}) => {
 
     //Creando funcion para que se abra y cierre el sidebar
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
-
     //Creando funciones que se encargaran de ejecutarse para que cambie el valor de isProductDetailOpen
     const openProductDetail = () => setIsProductDetailOpen(true) //esta se en carga de cambiar el valor a true
     const closeProductDetail = () => setIsProductDetailOpen(false) //esta se encarga de camviar el valor a false
+
+    //Creando funcion para que se abra y cierre el sidebar
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+    //Creando funciones que se encargaran de ejecutarse para que cambie el valor de isProductDetailOpen
+    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true) //esta se en carga de cambiar el valor a true
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false) //esta se encarga de camviar el valor a false
+
+    //Creando estado para visualizar el detalle de un producto
+    const [productToShow, setProductToShow] = useState({}) //en el estado se trae un objeto vacio ya que este objeto se va a llenar
+
+    //Creando estado para almacenar los articulos que se agreguen al carrito
+    const [cartProduct, setCartProduct] = useState([]) //en el estado se trae un array vacio ya que este array se va a ir llenando
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -30,7 +41,14 @@ export const ShoppingCartProvider = ({children}) => {
             //Aqui se pasan la funciones para que todos los componentes escuchen el cambio
             openProductDetail,
             closeProductDetail,
-            isProductDetailOpen
+            isProductDetailOpen,
+            productToShow,
+            setProductToShow,
+            cartProduct,
+            setCartProduct,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu,
+            isCheckoutSideMenuOpen
         }}>
             {children}
         </ShoppingCartContext.Provider>
